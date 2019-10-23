@@ -1,35 +1,49 @@
 <template>
   <div>
-    <section>
-      <h3 class="head">Search Github Users</h3>
-      <Search></Search>
-    </section>
-    <Foot></Foot>
+    <el-row class="tac">
+      <el-col :span="3">
+        <h3>Router Basic - 01</h3>
+        <el-menu
+          default-active="2"
+          class="el-menu-vertical-demo"
+          router
+          @open="handleOpen"
+          @close="handleClose">
+          <el-menu-item index="aboutPage">
+            <i class="el-icon-menu"></i>
+            <span slot="title">Aboout</span>
+          </el-menu-item>
+          <el-menu-item index="homePage">
+            <i class="el-icon-setting"></i>
+            <span slot="title">home</span>
+          </el-menu-item>
+        </el-menu>
+      </el-col>
+    </el-row>
+    <div class="container">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
-import Search from './components/search'
-import Foot from './components/foot'
+import About from './components/about'
+import Home from './components/home'
 
 export default {
   components: {
-    Search,
-    Foot
+    About,
+    Home
+  },
+  methods: {
+    handleOpen (key, keyPath) {
+      console.log(key, keyPath)
+    },
+    handleClose (key, keyPath) {
+      console.log(key, keyPath)
+    }
   }
 }
 </script>
 <style scoped>
-  section{
-    width: 80%;
-    height: 350px;
-    margin: 0 auto;
-    background-color: #efefef;
-  }
-  .head{
-    padding-top: 150px;
-    font-size: 36px;
-    margin-left: 150px;
-  }
-
 </style>
